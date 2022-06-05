@@ -1,6 +1,6 @@
 // DUCKS pattern
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {store} from '../../entry-point/store'
+import {injectReducer,store} from '../../entry-point/store'
 
 interface CounterState {
   value: number;
@@ -26,7 +26,6 @@ const counterSlice = createSlice({
     // reset
   },
 });
-
+injectReducer("counter", counterSlice.reducer)
 export const { incremented, amountAdded } = counterSlice.actions;
 export default counterSlice.reducer;
-store.injectReducer("counter", counterSlice.reducer)
