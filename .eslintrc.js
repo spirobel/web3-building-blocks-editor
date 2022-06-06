@@ -20,9 +20,16 @@ module.exports = {
     },
     ecmaVersion: 'latest',
     sourceType: 'module',
+    project: './tsconfig.json'
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
     'prettier/prettier': 'error',
+    "no-param-reassign": [1, { "props": true, "ignorePropertyModificationsFor": ["state"] }],
+    "import/extensions": 0,
+    "import/prefer-default-export": 0,
+    "import/no-unresolved": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [ ".tsx"] }],
+    "@typescript-eslint/restrict-template-expressions": 0
   },
 }

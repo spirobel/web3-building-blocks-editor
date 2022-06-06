@@ -1,25 +1,24 @@
-import { emptySplitApi } from '../../entry-point/api';
+import { emptySplitApi } from '../../entry-point/api'
 
 interface Breed {
-  id: string;
-  name: string;
+  id: string
+  name: string
   image: {
-    url: string;
-  };
+    url: string
+  }
 }
 
 const extendedApi = emptySplitApi.injectEndpoints({
-    endpoints(builder) {
-        return {
-          fetchBreeds: builder.query<Breed[], number | void>({
-            query(limit = 10) {
-              return `/breeds?limit=${limit}`;
-            },
-          }),
-        };
-      },
-    overrideExisting: false,
-  })
-  
+  endpoints(builder) {
+    return {
+      fetchBreeds: builder.query<Breed[], number | void>({
+        query(limit = 10) {
+          return `/breeds?limit=${limit}`
+        },
+      }),
+    }
+  },
+  overrideExisting: false,
+})
 
-export const { useFetchBreedsQuery } = extendedApi;
+export const { useFetchBreedsQuery } = extendedApi

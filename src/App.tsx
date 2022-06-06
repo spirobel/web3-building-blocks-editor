@@ -1,23 +1,23 @@
 import React, { useState } from 'react'
-import { useAppDispatch, useAppSelector } from './entry-point/hooks';
-import { incremented, amountAdded } from './lego-blocks/counter/counter-slice';
-import { useFetchBreedsQuery } from './lego-blocks/dogs/dogs-api-slice';
+import { useAppDispatch, useAppSelector } from './entry-point/hooks'
+import { amountAdded } from './lego-blocks/counter/counter-slice'
+import { useFetchBreedsQuery } from './lego-blocks/dogs/dogs-api-slice'
 import logo from './logo.svg'
 import './App.css'
 
 function App() {
-  const count = useAppSelector((state) => state.counter.value);
-  const dispatch = useAppDispatch();
+  const count = useAppSelector((state) => state.counter.value)
+  const dispatch = useAppDispatch()
 
-  const [numDogs, setNumDogs] = useState(10);
-  const { data = [], isFetching } = useFetchBreedsQuery(numDogs);
+  const [numDogs, setNumDogs] = useState(10)
+  const { data = [] } = useFetchBreedsQuery(numDogs)
 
   function handleClick() {
     // increment by 1
-    // dispatch(incremented()); 
+    // dispatch(incremented());
 
     // increment by a fixed amount
-    dispatch(amountAdded(3));
+    dispatch(amountAdded(3))
   }
 
   return (
@@ -26,21 +26,24 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
         <p>
-          <button onClick={handleClick}>
+          <button type="button" onClick={handleClick}>
             count is: {count}
           </button>
         </p>
-        
+
         <div>
           <p>Dogs to fetch:</p>
-          <select value={numDogs} onChange={(e) => setNumDogs(Number(e.target.value))}>
+          <select
+            value={numDogs}
+            onChange={(e) => setNumDogs(Number(e.target.value))}
+          >
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="15">15</option>
             <option value="20">20</option>
           </select>
         </div>
-        
+
         <div>
           <p>Number of dogs fetched: {data.length}</p>
           <table>
