@@ -1,17 +1,23 @@
 // Or from '@reduxjs/toolkit/query' if not using the auto-generated hooks
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const DOGS_API_KEY = 'cbfb51a2-84b6-4025-a3e2-ed8616edf311'
-
 // initialize an empty api service that we'll inject endpoints into later as needed
-export const emptySplitApi = createApi({
+export const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api.thedogapi.com/v1',
+    baseUrl: 'http://127.0.0.1:3000/',
     prepareHeaders(headers) {
-      headers.set('x-api-key', DOGS_API_KEY)
-
+      // headers.set('credentials', 'include')
+      // headers.set('Content-Type', 'application/json')
       return headers
     },
   }),
-  endpoints: () => ({}),
+  endpoints: (builder) => ({
+    csrf: builder.query<{ csrf: string }, void>({
+      query() {
+        return '/session/csrf.json'
+      },
+    }),
+  }),
 })
+
+export const { useCsrfQuery } = api
