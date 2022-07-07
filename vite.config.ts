@@ -7,5 +7,6 @@ export default defineConfig({
   build: {
     outDir: '../web3-building-blocks/public/editor',
     emptyOutDir: true
-  }
+  },
+  server: {port: 1337}
 })
