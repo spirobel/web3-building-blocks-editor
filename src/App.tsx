@@ -6,7 +6,6 @@ import {
   Navigate,
 } from '@tanstack/react-location'
 import 'antd/dist/antd.css'
-import './App.css'
 import Login from './editor-ui/Login'
 
 const location = new ReactLocation()
