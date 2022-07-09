@@ -1,9 +1,12 @@
 import React from 'react'
 import { Button, Form, Input } from 'antd'
+import { LoginRequest, useLoginMutation } from '../entry-point/api'
 
 export default function Login() {
-  const onFinish = (values: any) => {
+  const [sendLoginRequest] = useLoginMutation()
+  const onFinish = (values: LoginRequest) => {
     console.log('Success:', values)
+    sendLoginRequest(values)!
   }
 
   const onFinishFailed = (errorInfo: any) => {
@@ -23,7 +26,7 @@ export default function Login() {
       >
         <Form.Item
           label="Username"
-          name="username"
+          name="login"
           rules={[{ required: true, message: 'Please input your username!' }]}
         >
           <Input />

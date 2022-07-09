@@ -13,7 +13,7 @@ export interface CurrentUser {
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.DEV ? 'http://127.0.0.1:3000/' : '/',
+    baseUrl: import.meta.env.DEV ? 'http://localhost:4200/' : '/',
     prepareHeaders(headers, { getState }) {
       const csrfToken = (getState() as RootState).csrf.token
       if (csrfToken) {
@@ -25,7 +25,7 @@ export const api = createApi({
   endpoints: (builder) => ({
     csrf: builder.query<{ csrf: string }, void>({
       query() {
-        return '/session/csrf.json'
+        return { url: '/session/csrf.json', credentials: 'include' }
       },
     }),
     current_user: builder.query<CurrentUser | null, void>({
@@ -38,9 +38,10 @@ export const api = createApi({
         url: '/session.json',
         method: 'POST',
         body: credentials,
+        credentials: 'include',
       }),
     }),
   }),
 })
 
-export const { useCsrfQuery } = api
+export const { useCsrfQuery, useLoginMutation } = api
