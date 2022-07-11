@@ -8,5 +8,12 @@ export default defineConfig({
     outDir: '../web3-building-blocks/public/editor',
     emptyOutDir: true
   },
-  server: {port: 1337}
+  server: {
+    port: 1337,
+    proxy: {
+      '/session/csrf.json':'http://localhost:3000/',
+      '/web3/logged_in.json':"http://localhost:3000/",
+      '/session.json':'http://localhost:3000/'
+    }
+  }
 })
