@@ -1,5 +1,3 @@
-/* eslint no-param-reassign: 0 */
-
 import { createSlice } from '@reduxjs/toolkit'
 import { api, CurrentUser } from '../api'
 import type { RootState } from '../store'
@@ -12,7 +10,7 @@ const slice = createSlice({
     builder.addMatcher(
       api.endpoints.current_user.matchFulfilled,
       (state, { payload }) => {
-        state = payload
+        return payload
       }
     )
   },
