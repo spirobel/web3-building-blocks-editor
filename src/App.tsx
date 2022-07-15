@@ -9,6 +9,7 @@ import 'antd/dist/antd.css'
 import { useSelector } from 'react-redux'
 import Login from './editor-ui/Login'
 import { selectCurrentUser } from './entry-point/boring-background-plumbing/current-user-slice'
+import { PageBuilder } from './editor-ui/PageBuilder'
 
 const location = new ReactLocation()
 function App() {
@@ -26,7 +27,7 @@ function App() {
     <Router
       location={location}
       routes={[
-        { path: '/', element: <div>loggedin</div> },
+        { path: '/', element: <PageBuilder /> },
         { path: '/login', element: <Login /> },
       ]}
     >
