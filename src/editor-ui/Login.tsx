@@ -1,12 +1,21 @@
 import React from 'react'
 import { Button, Form, Input } from 'antd'
+import { useNavigate } from '@tanstack/react-location'
 import { LoginRequest, useLoginMutation } from '../entry-point/api'
 
 export default function Login() {
   const [sendLoginRequest] = useLoginMutation()
+  const navigate = useNavigate()
   const onFinish = (values: LoginRequest) => {
     console.log('Success:', values)
-    sendLoginRequest(values)!
+    sendLoginRequest(values)
+      .unwrap()
+      .then(() => {
+        navigate({ to: '../' })
+      })
+      .catch((errorInfo) => {
+        console.log('Failed:', errorInfo)
+      })
   }
 
   const onFinishFailed = (errorInfo: any) => {
