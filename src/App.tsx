@@ -10,6 +10,8 @@ import { useSelector } from 'react-redux'
 import Login from './editor-ui/Login'
 import { selectCurrentUser } from './entry-point/boring-background-plumbing/current-user-slice'
 import { PageBuilder } from './editor-ui/PageBuilder'
+import { CategoryCreator } from './editor-ui/CategoryCreator'
+import { EditorHome } from './editor-ui/EditorHome'
 
 const location = new ReactLocation()
 function App() {
@@ -27,7 +29,9 @@ function App() {
     <Router
       location={location}
       routes={[
-        { path: '/', element: <PageBuilder /> },
+        { path: '/', element: <EditorHome /> },
+        { path: '/categories/new', element: <CategoryCreator /> },
+        { path: '/pages/pagebuilder', element: <PageBuilder /> },
         { path: '/login', element: <Login /> },
       ]}
     >

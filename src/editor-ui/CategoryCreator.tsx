@@ -1,10 +1,10 @@
 import React from 'react'
 import { MenuWrapper } from './MenuWrapper'
 
-export function PageBuilder() {
+export function CategoryCreator() {
   return (
     <MenuWrapper>
-      <div>hello from PageBuilder</div>
+      <div>hello from CategoryCreator</div>
     </MenuWrapper>
   )
 }

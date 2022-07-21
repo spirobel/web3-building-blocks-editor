@@ -1,10 +1,10 @@
 import React from 'react'
 import { MenuWrapper } from './MenuWrapper'
 
-export function PageBuilder() {
+export function EditorHome() {
   return (
     <MenuWrapper>
-      <div>hello from PageBuilder</div>
+      <div>hello from EditorHome</div>
     </MenuWrapper>
   )
 }
