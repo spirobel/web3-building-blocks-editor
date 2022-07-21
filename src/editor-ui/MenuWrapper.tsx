@@ -1,24 +1,21 @@
 import React from 'react'
 import { Menu } from 'antd'
+import { Link, useMatch } from '@tanstack/react-location'
 
 interface Props {
   children: any
 }
 export function MenuWrapper({ children }: Props) {
+  const match = useMatch()
   const items = [
-    { label: 'item 1', key: 'item-1' }, // remember to pass the key prop
-    { label: 'item 2', key: 'item-2' }, // which is required
-    {
-      label: 'sub menu',
-      key: 'submenu',
-      children: [{ label: 'item 3', key: 'submenu-item-1' }],
-    },
+    { label: <Link to="/">pages</Link>, key: '/' }, // remember to pass the key prop
+    { label: <Link to="/categories">categories</Link>, key: '/categories' }, // which is required
   ]
-
+  const selectedKey = match.route.path || '/'
   return (
     <div className="grid place-items-center mt-5 space-y-4">
       <div>
-        <Menu items={items} mode="horizontal" />
+        <Menu items={items} mode="horizontal" selectedKeys={[selectedKey]} />
       </div>
       <div>{children} </div>
     </div>

@@ -11,7 +11,6 @@ import Login from './editor-ui/Login'
 import { selectCurrentUser } from './entry-point/boring-background-plumbing/current-user-slice'
 import { PageBuilder } from './editor-ui/PageBuilder'
 import { CategoryCreator } from './editor-ui/CategoryCreator'
-import { EditorHome } from './editor-ui/EditorHome'
 
 const location = new ReactLocation()
 function App() {
@@ -24,14 +23,13 @@ function App() {
     }, 500)
     return () => clearTimeout(timer)
   }, [])
-
   return (
     <Router
       location={location}
       routes={[
-        { path: '/', element: <EditorHome /> },
-        { path: '/categories/new', element: <CategoryCreator /> },
-        { path: '/pages/pagebuilder', element: <PageBuilder /> },
+        { path: '/', element: <PageBuilder /> },
+        { path: '/categories', element: <CategoryCreator /> },
+        //    { path: '/pages/pagebuilder', element: <PageBuilder /> },
         { path: '/login', element: <Login /> },
       ]}
     >
