@@ -7,7 +7,6 @@ export default function Login() {
   const [sendLoginRequest] = useLoginMutation()
   const navigate = useNavigate()
   const onFinish = (values: LoginRequest) => {
-    console.log('Success:', values)
     sendLoginRequest(values)
       .unwrap()
       .then(() => {
@@ -18,10 +17,6 @@ export default function Login() {
       })
   }
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo)
-  }
-
   return (
     <div className="grid place-items-center h-screen ">
       <Form
@@ -30,7 +25,6 @@ export default function Login() {
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
         <Form.Item
@@ -51,7 +45,7 @@ export default function Login() {
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
-            Submit
+            Login
           </Button>
         </Form.Item>
       </Form>
