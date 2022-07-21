@@ -1,7 +1,6 @@
 import React from 'react'
-import { Menu, Layout } from 'antd'
+import { Menu } from 'antd'
 
-const { Header, Content } = Layout
 interface Props {
   children: any
 }
@@ -17,11 +16,11 @@ export function MenuWrapper({ children }: Props) {
   ]
 
   return (
-    <Layout>
-      <Header>
-        <Menu items={items} />
-      </Header>
-      <Content>{children} </Content>
-    </Layout>
+    <div className="grid place-items-center mt-5 space-y-4">
+      <div>
+        <Menu items={items} mode="horizontal" />
+      </div>
+      <div>{children} </div>
+    </div>
   )
 }
