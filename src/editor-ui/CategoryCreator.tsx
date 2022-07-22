@@ -10,14 +10,12 @@ export function CategoryCreator() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         <Card
           title={<Input placeholder="category name" />}
-          // extra={<a href="#">More</a>}
           style={{ width: 300 }}
         >
           <TextArea
             autoSize={{ minRows: 4, maxRows: 4 }}
             showCount
             maxLength={116}
-            //  style={{ height: 100 }}
             placeholder="description"
           />
         </Card>
